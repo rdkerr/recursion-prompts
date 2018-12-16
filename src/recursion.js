@@ -22,14 +22,12 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-    console.log(array);
     if (array.length === 0) {
         return 0;
     }
     if (array.length === 1) {
         return array[0];
     } else { 
-        console.log("A:" + array[array.length - 1]);
         return array[array.length - 1] + sum(array.slice(0,array.length-1));
     }
 };
@@ -49,6 +47,15 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+    if (n < 0) {
+        return isEven(0 - n);
+    } if (n === 1) {
+        return false;
+    } if (n === 2) {
+        return true;
+    } else {
+        return !(n & 1) && isEven(n -2);
+    }
 };
 
 // 5. Sum all integers below a given integer.
