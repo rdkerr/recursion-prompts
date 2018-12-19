@@ -609,4 +609,12 @@ var mergeHelper = function(leftArr, rightArr) {
 // console.log(obj2); // {a:1,b:{bb:{bbb:2}},c:3}
 // obj1 === obj2 // false
 var clone = function(input) {
+    let result = Array.isArray(input) ? [] : {};
+    for (let key in input) {
+        if (typeof input[key] === 'object' || Array.isArray(input[key])) {
+            result[key] = clone(input[key]);
+        }
+        result[key] = input[key];
+    }
+    return result;
 };
